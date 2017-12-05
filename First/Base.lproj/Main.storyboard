@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-rO-QCl">
-                                <rect key="frame" x="16" y="20" width="288" height="80.5"/>
+                                <rect key="frame" x="20" y="20" width="280" height="80.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-Rx-mMx">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="20.5"/>
@@ -36,6 +36,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO7-9a-qzd">
                                         <rect key="frame" x="0.0" y="50.5" width="30" height="30"/>
                                         <state key="normal" title="Go"/>
+                                        <connections>
+                                            <action selector="goButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HkF-4j-Slw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -52,6 +55,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="asdasd" destination="RlN-Rx-mMx" id="9j2-un-EaQ"/>
+                        <outlet property="goButton" destination="mO7-9a-qzd" id="1eF-40-ArC"/>
+                        <outlet property="textField" destination="Zgq-zU-epG" id="OVH-8D-v7N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

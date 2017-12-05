@@ -8,18 +8,38 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
+    // MARK: Properties
+    @IBOutlet weak var asdasd: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var goButton: UIButton!
+    
+    // MARK: Actions
+    @IBAction func goButtonAction(_ sender: UIButton) {
+        asdasd.text = "szia"
+    }
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        asdasd.text = textField.text
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        NSLog("szeeevassz viewDidLoad")
+        textField.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
 
