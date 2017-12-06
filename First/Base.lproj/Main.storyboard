@@ -41,11 +41,15 @@
                                             <action selector="goButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HkF-4j-Slw"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="300" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="RHE-87-cyG">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="300" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="RHE-87-cyG">
                                         <rect key="frame" x="0.0" y="80.333333333333314" width="354" height="354"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RHE-87-cyG" secondAttribute="height" multiplier="1:1" id="EFT-Qh-G2g"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="MDN-1d-gQz" appends="YES" id="hiv-4s-i3G"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -66,10 +70,16 @@
                     <connections>
                         <outlet property="asdasd" destination="RlN-Rx-mMx" id="9j2-un-EaQ"/>
                         <outlet property="goButton" destination="mO7-9a-qzd" id="1eF-40-ArC"/>
+                        <outlet property="photoImageView" destination="RHE-87-cyG" id="dBz-sv-FYp"/>
                         <outlet property="textField" destination="Zgq-zU-epG" id="OVH-8D-v7N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MDN-1d-gQz">
+                    <connections>
+                        <action selector="selectImageAction:" destination="BYZ-38-t0r" id="uN4-ZR-v4H"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="113.04347826086958" y="116.57608695652175"/>
         </scene>
