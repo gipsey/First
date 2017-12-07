@@ -21,7 +21,11 @@ class RatingControl: UIStackView {
     
     // MARK: Properties
     private var ratinButtons = [UIButton]()
-    var rating = 0
+    var rating = 0 {
+        didSet {
+            updateButtonsOnTap()
+        }
+    }
     @IBInspectable var startSize: CGSize = CGSize(width: 44.0, height: 44.0) {
         didSet {
             extractedFunc()
@@ -32,7 +36,7 @@ class RatingControl: UIStackView {
             extractedFunc()
         }
     }
-    
+
     // MARK: initialization
     
     override init(frame: CGRect) {
@@ -53,17 +57,37 @@ class RatingControl: UIStackView {
         
         ratinButtons.removeAll()
         
+        let bundle = Bundle(for: type(of: self))
+        let filledStar = UIImage(named: "filledstar", in: bundle, compatibleWith: self.traitCollection)
+        let emptyStar = UIImage(named: "emptystar", in: bundle, compatibleWith: self.traitCollection)
+        let highlightedStar = UIImage(named: "highlightedstar", in: bundle, compatibleWith: self.traitCollection)
+        
         for _ in 0..<startCount {
             let b1 = UIButton()
             
-            b1.backgroundColor = UIColor.red
+            b1.setImage(emptyStar, for: .normal)
+            b1.setImage(filledStar, for: .selected)
+            b1.setImage(highlightedStar, for: .highlighted)
+            b1.setImage(highlightedStar, for: [.selected, .highlighted])
+            
             b1.translatesAutoresizingMaskIntoConstraints = false
             b1.heightAnchor.constraint(equalToConstant: startSize.height).isActive = true
             b1.widthAnchor.constraint(equalToConstant: startSize.width).isActive = true
             b1.addTarget(self, action: #selector(RatingControl.onButtonPressed(button:)), for: .touchUpInside)
+            
+            b1.accessibilityLabel = "label"
+            b1.accessibilityHint = "hiont"
+            b1.accessibilityValue = "value"
+            
             addArrangedSubview(b1)
             
             ratinButtons.append(b1)
+        }
+    }
+    
+    private func updateButtonsOnTap() {
+        for (index, button) in ratinButtons.enumerated() {
+            button.isSelected = index < rating
         }
     }
     
@@ -71,5 +95,14 @@ class RatingControl: UIStackView {
     @objc
     func onButtonPressed(button: UIButton) {
         print("ddd button pressed")
+        
+        let selectedIndex = ratinButtons.index(of: button)!
+        let selectedRating = selectedIndex + 1
+        
+        if (selectedRating == rating) {
+            rating = 0
+        } else {
+            rating = selectedRating
+        }
     }
 }

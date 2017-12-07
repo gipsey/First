@@ -13,13 +13,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     // MARK: Properties
     @IBOutlet weak var asdasd: UILabel!
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var goButton: UIButton!
+//    @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingBar: RatingControl!
     
     // MARK: Actions
-    @IBAction func goButtonAction(_ sender: UIButton) {
-        asdasd.text = "szia"
-    }
+//    @IBAction func goButtonAction(_ sender: UIButton) {
+//        asdasd.text = "szia"
+//    }
     
     // MARK: UIImagePickerControllerDelegate
     @IBAction func selectImageAction(_ sender: UITapGestureRecognizer) {
@@ -68,6 +69,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         super.viewDidLoad()
         NSLog("szeeevassz viewDidLoad")
         textField.delegate = self
+        
+        asdasd.text = "Meal name"
     }
     
     override func didReceiveMemoryWarning() {

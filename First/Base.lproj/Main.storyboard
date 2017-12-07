@@ -19,30 +19,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-rO-QCl">
-                                <rect key="frame" x="20" y="39.999999999999972" width="374" height="484.33333333333326"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-rO-QCl">
+                                <rect key="frame" x="20" y="40" width="374" height="414.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-Rx-mMx">
-                                        <rect key="frame" x="0.0" y="0.0" width="83" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="145.66666666666666" y="0.0" width="83" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zgq-zU-epG">
-                                        <rect key="frame" x="0.0" y="20.333333333333336" width="129" height="30"/>
+                                        <rect key="frame" x="122.66666666666666" y="20.333333333333336" width="129" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO7-9a-qzd">
-                                        <rect key="frame" x="0.0" y="50.333333333333329" width="30" height="30"/>
-                                        <state key="normal" title="Go"/>
-                                        <connections>
-                                            <action selector="goButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HkF-4j-Slw"/>
-                                        </connections>
-                                    </button>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="300" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="RHE-87-cyG">
-                                        <rect key="frame" x="0.0" y="80.333333333333314" width="374" height="374"/>
+                                        <rect key="frame" x="20" y="50.333333333333314" width="334" height="334"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RHE-87-cyG" secondAttribute="height" multiplier="1:1" id="EFT-Qh-G2g"/>
@@ -52,11 +45,8 @@
                                         </connections>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="100" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nEN-H1-TiW" customClass="RatingControl" customModule="First" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="454.33333333333331" width="68" height="30"/>
+                                        <rect key="frame" x="96" y="384.33333333333331" width="182" height="30"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="startCount">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="size" keyPath="startSize">
                                                 <size key="value" width="30" height="30"/>
                                             </userDefinedRuntimeAttribute>
@@ -79,8 +69,8 @@
                     </view>
                     <connections>
                         <outlet property="asdasd" destination="RlN-Rx-mMx" id="9j2-un-EaQ"/>
-                        <outlet property="goButton" destination="mO7-9a-qzd" id="1eF-40-ArC"/>
                         <outlet property="photoImageView" destination="RHE-87-cyG" id="dBz-sv-FYp"/>
+                        <outlet property="ratingBar" destination="nEN-H1-TiW" id="oHi-9r-Cf3"/>
                         <outlet property="textField" destination="Zgq-zU-epG" id="OVH-8D-v7N"/>
                     </connections>
                 </viewController>
