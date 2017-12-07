@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-rO-QCl">
-                                <rect key="frame" x="20" y="39.999999999999972" width="374" height="434.33333333333326"/>
+                                <rect key="frame" x="20" y="39.999999999999972" width="374" height="484.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlN-Rx-mMx">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="20.333333333333332"/>
@@ -42,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="300" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="RHE-87-cyG">
-                                        <rect key="frame" x="0.0" y="80.333333333333314" width="354" height="354"/>
+                                        <rect key="frame" x="0.0" y="80.333333333333314" width="374" height="374"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RHE-87-cyG" secondAttribute="height" multiplier="1:1" id="EFT-Qh-G2g"/>
@@ -51,10 +51,20 @@
                                             <outletCollection property="gestureRecognizers" destination="MDN-1d-gQz" appends="YES" id="hiv-4s-i3G"/>
                                         </connections>
                                     </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="100" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nEN-H1-TiW" customClass="RatingControl" customModule="First" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="454.33333333333331" width="68" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="startCount">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="startSize">
+                                                <size key="value" width="30" height="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RHE-87-cyG" firstAttribute="centerX" secondItem="v1N-rO-QCl" secondAttribute="centerX" id="3KN-JW-hhf"/>
-                                    <constraint firstAttribute="trailing" secondItem="RHE-87-cyG" secondAttribute="trailing" constant="20" id="uv4-em-lg6"/>
                                     <constraint firstItem="RHE-87-cyG" firstAttribute="leading" secondItem="v1N-rO-QCl" secondAttribute="leading" constant="20" id="ybD-PK-bsC"/>
                                 </constraints>
                             </stackView>
