@@ -21,9 +21,20 @@ class FirstTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_whenDataIsInvalid_initializationFails() {
+        let meal1 = Meal("", nil, 1)
+        XCTAssertNil(meal1)
+        
+        let meal2 = Meal("nonempty", nil, -1)
+        XCTAssertNil(meal2)
+        
+        let meal3 = Meal("nonempty", nil, 6)
+        XCTAssertNil(meal3)
+    }
+    
+    func test_whenDataIsValid_initializationSuceeds() {
+        let meal1 = Meal("something", nil, 1)
+        XCTAssertNotNil(meal1)
     }
     
     func testPerformanceExample() {

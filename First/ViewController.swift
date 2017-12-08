@@ -13,15 +13,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     // MARK: Properties
     @IBOutlet weak var asdasd: UILabel!
     @IBOutlet weak var textField: UITextField!
-//    @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingBar: RatingControl!
-    
-    // MARK: Actions
-//    @IBAction func goButtonAction(_ sender: UIButton) {
-//        asdasd.text = "szia"
-//    }
-    
+
     // MARK: UIImagePickerControllerDelegate
     @IBAction func selectImageAction(_ sender: UITapGestureRecognizer) {
         textField.resignFirstResponder()
@@ -67,7 +61,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("szeeevassz viewDidLoad")
+        NSLog("viewDidLoad called")
         textField.delegate = self
         
         asdasd.text = "Meal name"
