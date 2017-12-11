@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MealViewController.swift
 //  First
 //
 //  Created by David Debre on 12/4/17.
@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
-    @IBOutlet weak var asdasd: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingBar: RatingControl!
@@ -34,7 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        asdasd.text = textField.text
+//        asdasd.text = textField.text
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -63,8 +62,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         super.viewDidLoad()
         NSLog("viewDidLoad called")
         textField.delegate = self
-        
-        asdasd.text = "Meal name"
     }
     
     override func didReceiveMemoryWarning() {
