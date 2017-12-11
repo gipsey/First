@@ -13,6 +13,7 @@
 		6521C5681FD567DB007799BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6521C5671FD567DB007799BF /* Assets.xcassets */; };
 		6521C56B1FD567DB007799BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6521C5691FD567DB007799BF /* LaunchScreen.storyboard */; };
 		6521C5761FD567DB007799BF /* FirstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6521C5751FD567DB007799BF /* FirstTests.swift */; };
+		655C232E1FDE780E001AE909 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655C232D1FDE780E001AE909 /* MealTableViewCell.swift */; };
 		65B680831FDAB3030061F9CC /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B680821FDAB3030061F9CC /* Meal.swift */; };
 		65CD5F101FD84A1A009ED3C3 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD5F0F1FD84A1A009ED3C3 /* RatingControl.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		6521C5711FD567DB007799BF /* FirstTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6521C5751FD567DB007799BF /* FirstTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTests.swift; sourceTree = "<group>"; };
 		6521C5771FD567DB007799BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		655C232D1FDE780E001AE909 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		65B680821FDAB3030061F9CC /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		65CD5F0F1FD84A1A009ED3C3 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				6521C5621FD567DB007799BF /* ViewController.swift */,
 				65CD5F0F1FD84A1A009ED3C3 /* RatingControl.swift */,
 				6521C5641FD567DB007799BF /* Main.storyboard */,
+				655C232D1FDE780E001AE909 /* MealTableViewCell.swift */,
 				6521C5671FD567DB007799BF /* Assets.xcassets */,
 				6521C5691FD567DB007799BF /* LaunchScreen.storyboard */,
 				6521C56C1FD567DB007799BF /* Info.plist */,
@@ -209,6 +212,7 @@
 				6521C5631FD567DB007799BF /* ViewController.swift in Sources */,
 				65CD5F101FD84A1A009ED3C3 /* RatingControl.swift in Sources */,
 				6521C5611FD567DB007799BF /* AppDelegate.swift in Sources */,
+				655C232E1FDE780E001AE909 /* MealTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
