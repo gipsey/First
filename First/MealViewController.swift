@@ -13,14 +13,31 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
 
     var meal : Meal?
     
-    // MARK: Properties
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingBar: RatingControl!
 
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-
+    
+    @IBAction func selectImageAction(_ sender: UITapGestureRecognizer) {
+        textField.resignFirstResponder()
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("viewDidLoad called")
+        textField.delegate = self
+        
+        updateSaveButtonState()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -36,29 +53,21 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         meal = Meal(text, image, rating)
     }
     
-    // MARK: UIImagePickerControllerDelegate
-    @IBAction func selectImageAction(_ sender: UITapGestureRecognizer) {
-        textField.resignFirstResponder()
-        
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveButton.isEnabled = false
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-//        asdasd.text = textField.text
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             let alertView = UIAlertController(title: "image cannot be picked", message: ":(", preferredStyle: .alert)
             present(alertView, animated: true)
@@ -79,16 +88,9 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         present(alertView, animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NSLog("viewDidLoad called")
-        textField.delegate = self
+    private func updateSaveButtonState() {
+        let text = textField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }
 
