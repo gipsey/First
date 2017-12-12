@@ -10,15 +10,19 @@ import UIKit
 import os.log
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     var meal : Meal?
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingBar: RatingControl!
-
+    
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    @IBAction func onCancelTap(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func selectImageAction(_ sender: UITapGestureRecognizer) {
         textField.resignFirstResponder()
@@ -42,7 +46,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         super.prepare(for: segue, sender: sender)
         
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
-                os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
         
@@ -64,7 +68,10 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
-        navigationItem.title = textField.text
+        
+        if (!(textField.text ?? "").isEmpty) {
+            navigationItem.title = textField.text
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

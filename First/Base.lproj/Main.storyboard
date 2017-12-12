@@ -80,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="v1N-rO-QCl">
-                                <rect key="frame" x="16" y="84" width="343" height="430"/>
+                                <rect key="frame" x="16" y="84" width="343" height="360"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zgq-zU-epG">
                                         <rect key="frame" x="21.5" y="0.0" width="300" height="30"/>
@@ -113,7 +113,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="100" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nEN-H1-TiW" customClass="RatingControl" customModule="First" customModuleProvider="target">
-                                        <rect key="frame" x="21.5" y="330" width="300" height="100"/>
+                                        <rect key="frame" x="80.5" y="330" width="182" height="30"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="size" keyPath="startSize">
                                                 <size key="value" width="30" height="30"/>
@@ -132,7 +132,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="Qej-Kg-tqN">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="H2l-GV-yLY"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="H2l-GV-yLY">
+                            <connections>
+                                <action selector="onCancelTap:" destination="BYZ-38-t0r" id="wIX-XB-hWW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="gzL-jv-m49">
                             <connections>
                                 <segue destination="cdd-Bf-sNz" kind="unwind" unwindAction="unwindToMealListWithSender:" id="d0f-38-fIW"/>
