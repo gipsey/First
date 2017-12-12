@@ -7,14 +7,35 @@
 //
 
 import UIKit
+import os.log
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var meal : Meal?
+    
     // MARK: Properties
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingBar: RatingControl!
 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+                os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let text = textField.text ?? ""
+        let image = photoImageView.image
+        let rating = ratingBar.rating
+        
+        meal = Meal(text, image, rating)
+    }
+    
     // MARK: UIImagePickerControllerDelegate
     @IBAction func selectImageAction(_ sender: UITapGestureRecognizer) {
         textField.resignFirstResponder()

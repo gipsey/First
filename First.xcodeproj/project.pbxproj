@@ -93,11 +93,11 @@
 				6521C5621FD567DB007799BF /* MealViewController.swift */,
 				655C232D1FDE780E001AE909 /* MealTableViewCell.swift */,
 				65CD5F0F1FD84A1A009ED3C3 /* RatingControl.swift */,
+				65B680821FDAB3030061F9CC /* Meal.swift */,
 				6521C5671FD567DB007799BF /* Assets.xcassets */,
 				6521C5641FD567DB007799BF /* Main.storyboard */,
 				6521C5691FD567DB007799BF /* LaunchScreen.storyboard */,
 				6521C56C1FD567DB007799BF /* Info.plist */,
-				65B680821FDAB3030061F9CC /* Meal.swift */,
 			);
 			path = First;
 			sourceTree = "<group>";

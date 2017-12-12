@@ -122,16 +122,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="Qej-Kg-tqN">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7bJ-II-4ZF"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="gzL-jv-m49"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="H2l-GV-yLY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="gzL-jv-m49">
+                            <connections>
+                                <segue destination="cdd-Bf-sNz" kind="unwind" unwindAction="unwindToMealListWithSender:" id="d0f-38-fIW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="H2l-GV-yLY" id="Xaa-MH-Rf6"/>
                         <outlet property="photoImageView" destination="RHE-87-cyG" id="dBz-sv-FYp"/>
                         <outlet property="ratingBar" destination="nEN-H1-TiW" id="oHi-9r-Cf3"/>
+                        <outlet property="saveButton" destination="gzL-jv-m49" id="OP0-ot-dsT"/>
                         <outlet property="textField" destination="Zgq-zU-epG" id="OVH-8D-v7N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="cdd-Bf-sNz" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="MDN-1d-gQz">
                     <connections>
                         <action selector="selectImageAction:" destination="BYZ-38-t0r" id="uN4-ZR-v4H"/>
