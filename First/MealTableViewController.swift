@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class MealTableViewController: UITableViewController {
     
@@ -119,14 +120,33 @@ class MealTableViewController: UITableViewController {
      }
      */
     
-    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        
+        switch (segue.identifier ?? "") {
+        case "ShowDetail":
+            NSLog("NSLog ShowDetail")
+            os_log("ShowDetail", log: OSLog.default, type: .debug)
+            
+            let mealViewController = segue.destination as? MealViewController
+            let selectedCell = sender as! MealTableViewCell
+            let selectedIndexPath = tableView.indexPath(for: selectedCell)
+            
+            mealViewController?.meal = meals[selectedIndexPath!.row]
+        case "AddItem":
+            NSLog("NSLog AddItem")
+            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+        default:
+            NSLog("NSLog prepare - switch - something went wrong")
+            os_log("prepare - switch - something went wrong")
+            
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
+        
      }
-     */
     
 }
