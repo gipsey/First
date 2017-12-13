@@ -17,30 +17,19 @@ class MealTableViewController: UITableViewController {
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? MealViewController,
             let meal = sourceViewController.meal {
-            let newIndexPath = IndexPath(row: meals.count, section: 0)
             
-            meals.append(meal)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                meals[selectedIndexPath.row] = meal
+                tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
+            }
+            else {
+                let newIndexPath = IndexPath(row: meals.count, section: 0)
+                meals.append(meal)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            
+            saveMeals()
         }
-    }
-    
-    func loadDate() {
-        let m1 = UIImage(named: "m1")
-        guard let meal1 = Meal("Caprese Salad", m1, 4) else {
-            fatalError("Unable to instantiate meal1")
-        }
-        
-        let m2 = UIImage(named: "m2")
-        guard let meal2 = Meal("Chicken and Potatoes", m2, 5) else {
-            fatalError("Unable to instantiate meal2")
-        }
-        
-        let m3 = UIImage(named: "m3")
-        guard let meal3 = Meal("Pasta with Meatballs", m3, 3) else {
-            fatalError("Unable to instantiate meal2")
-        }
-        
-        meals += [meal1, meal2, meal3]
     }
     
     override func viewDidLoad() {
@@ -50,9 +39,13 @@ class MealTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+         navigationItem.leftBarButtonItem = editButtonItem
         
-        loadDate()
+        if let savedMeals = loadMeals() {
+            meals = savedMeals
+        } else {
+            loadDate()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,17 +86,18 @@ class MealTableViewController: UITableViewController {
      }
      */
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            meals.remove(at: indexPath.row)
+            saveMeals()
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
     
     /*
      // Override to support rearranging the table view.
@@ -120,12 +114,12 @@ class MealTableViewController: UITableViewController {
      }
      */
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         
         switch (segue.identifier ?? "") {
         case "ShowDetail":
@@ -146,7 +140,39 @@ class MealTableViewController: UITableViewController {
             
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
-        
-     }
+    }
     
+    private func saveMeals() {
+        let url = Meal.ArchiveURL.path
+        let isSuccess = NSKeyedArchiver.archiveRootObject(meals, toFile: url)
+        
+        if isSuccess {
+            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadMeals() -> [Meal]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
+    }
+    
+    private func loadDate() {
+        let m1 = UIImage(named: "m1")
+        guard let meal1 = Meal("Caprese Salad", m1, 4) else {
+            fatalError("Unable to instantiate meal1")
+        }
+        
+        let m2 = UIImage(named: "m2")
+        guard let meal2 = Meal("Chicken and Potatoes", m2, 5) else {
+            fatalError("Unable to instantiate meal2")
+        }
+        
+        let m3 = UIImage(named: "m3")
+        guard let meal3 = Meal("Pasta with Meatballs", m3, 3) else {
+            fatalError("Unable to instantiate meal2")
+        }
+        
+        meals += [meal1, meal2, meal3]
+    }
 }
