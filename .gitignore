@@ -1,0 +1,6 @@
+Pods/*
+First.xcworkspace
+First.xcodeproj/xcuserdata
+First.xcodeproj/project.xcworkspace
+Podfile.lock
+.idea
